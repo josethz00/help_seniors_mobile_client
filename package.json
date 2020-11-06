@@ -8,15 +8,34 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "~39.0.2",
-    "expo-status-bar": "~1.0.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
-    "react-native-web": "~0.13.12"
+    "@react-native-community/async-storage": "~1.11.0",
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-community/picker": "1.6.0",
+    "@react-navigation/bottom-tabs": "^5.8.0",
+    "@react-navigation/native": "^5.7.3",
+    "@react-navigation/stack": "^5.9.0",
+    "axios": "^0.21.0",
+    "expo": "~38.0.8",
+    "expo-constants": "9.1.1",
+    "expo-linear-gradient": "~8.2.1",
+    "expo-location": "~8.2.1",
+    "expo-notifications": "~0.3.3",
+    "expo-sms": "~8.2.1",
+    "expo-status-bar": "^1.0.2",
+    "expo-vector-icons": "^10.0.1",
+    "lottie": "^0.0.1",
+    "lottie-react-native": "~2.6.1",
+    "react": "16.11.0",
+    "react-dom": "~16.11.0",
+    "react-native": "0.62.2",
+    "react-native-gesture-handler": "~1.6.0",
+    "react-native-maps": "0.27.1",
+    "react-native-screens": "~2.9.0",
+    "react-native-web": "~0.11.7"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0"
+    "@babel/core": "^7.8.6",
+    "babel-preset-expo": "~8.1.0"
   },
   "private": true
 }

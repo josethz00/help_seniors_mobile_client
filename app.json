@@ -8,7 +8,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#5271ff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -16,14 +16,12 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "useNextNotificationsApi": true,
+      "softwareKeyboardLayoutMode": "pan"
+    },
     "ios": {
       "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
