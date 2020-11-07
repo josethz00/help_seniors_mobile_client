@@ -18,7 +18,7 @@ const Profile = ()=>{
     function notifyMessage (msg) {
         if (Platform.OS === 'android') {
           ToastAndroid.showWithGravity(
-            message,
+            msg,
             ToastAndroid.SHORT,
             ToastAndroid.CENTER
           );

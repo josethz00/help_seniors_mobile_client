@@ -5,7 +5,7 @@ async function sendSMS () {
 
     const user_id = await AsyncStorage.getItem('@HS:user_id');
     if (!user_id) {
-        throw new Error('Não foi possível enviar a mensagem');
+        return 'Não foi possível enviar a mensagem';
     }
 
     try {
@@ -19,7 +19,7 @@ async function sendSMS () {
 
     }
     catch (err) {
-        throw new Error('Não foi possível enviar a mensagem');
+        return 'Não foi possível enviar a mensagem';
     }
 }
 
