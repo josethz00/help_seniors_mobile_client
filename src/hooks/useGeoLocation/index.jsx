@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as Location from 'expo-location';
 
-const useGeolocation =() => {
+const useGeoLocation =() => {
 
     const [initialPosition, setInitialPosition] = useState([0, 0]);
 
@@ -30,4 +30,4 @@ const useGeolocation =() => {
 
 };
 
-export { useGeolocation };
+export { useGeoLocation };

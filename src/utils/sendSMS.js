@@ -4,7 +4,9 @@ import api from '../services/api';
 async function sendSMS () {
 
     const user_id = await AsyncStorage.getItem('@HS:user_id');
-    if (!user_id) {
+    const _token = await AsyncStorage.getItem('@HS:token');
+
+    if (!user_id || !_token) {
         return 'Não foi possível enviar a mensagem';
     }
 
@@ -12,7 +14,7 @@ async function sendSMS () {
 
         const { data } = await api.post(`users/message/${JSON.parse(user_id)}`, {
             headers: {
-                authorization: api.defaults.headers.authorization
+                authorization: `Bearer ${_token}`
             }
         });
         return data;

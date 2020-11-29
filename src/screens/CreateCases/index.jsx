@@ -8,15 +8,75 @@ import Input from '../../components/Input';
 import styles from './styles';
 import { RectButton } from 'react-native-gesture-handler';
 import { Feather } from 'expo-vector-icons';
+import api from '../../services/api';
+import { useCredentials } from '../../hooks/useCredentials';
 
 
 const CreateCases = () => {
 
-    const [selectedSection, setSelectedSection] = useState('0');
+    const { userId, token } = useCredentials();
+
+    const [selectedSection, setSelectedSection] = useState('Saúde');
+    const [errors, setErrors] = useState({
+        section: false,
+        title: false,
+        age: false, 
+        description: false
+    });
 
     const titleInputRef = useRef(null);
     const ageInputRef = useRef(null);
     const descriptionInputRef = useRef(null);
+
+
+    function createCase () {
+        const caseData = {
+            section: selectedSection,
+            title: titleInputRef.current.value,
+            age: ageInputRef.current.value,
+            description: descriptionInputRef.current.value,
+            status: 'Oferecer ajuda',
+            user_id: userId,
+            colab_id: null,
+        };
+        const hasErrors = validateData(caseData);
+        if (hasErrors)
+            return true;
+        api.post('users/posts/store', caseData, {
+            headers: {
+                authorization: token
+            }
+        }).then((response) => {
+            alert(response.data);
+        }).catch((err) => {
+            alert('Não foi possível realizar o pedido');
+            console.log(err.response.data);
+        });
+    }
+
+    function validateData (data) {
+
+        let err = {};
+
+        if (!data.section || data.section.length < 5 || data.section.length > 15) {
+            err.section = true;
+        }
+        if (!data.title || data.title.length > 70) {
+            err.title = true;
+        }
+        if (!data.age || data.age.length < 2 || data.age.length > 20) {
+            err.age = true;
+        }
+        if (!data.description || data.description.length < 40 || data.description.length > 300) {
+            err.description = true;
+        }
+        if(Object.keys(err).length !== 0) {
+            setErrors(err);
+            return true;
+        }
+        return false;
+
+    }
 
     return (
         <KeyboardAvoidingView
@@ -43,7 +103,7 @@ const CreateCases = () => {
                             </Picker>
                         </View>
                     </View>
-                    <View style={styles.inputWrapper}>
+                    <View style={[styles.inputWrapper, { borderWidth: errors.title ? 1.3: 0, borderColor: errors.title ? '#ff2401': null }]}>
                         <Input 
                             maxLength={60}
                             ref={titleInputRef} 
@@ -52,7 +112,7 @@ const CreateCases = () => {
                             placeholder="Título"
                         />
                     </View>
-                    <View style={styles.inputWrapper}>
+                    <View style={[styles.inputWrapper, { borderWidth: errors.age ? 1.3: 0, borderColor: errors.age ? '#ff2401': null }]}>
                         <Input 
                             maxLength={10} 
                             ref={ageInputRef}
@@ -67,7 +127,7 @@ const CreateCases = () => {
                             onChangeText={text => descriptionInputRef.current.value = text} 
                             multiline={true}
                             numberOfLines={10}
-                            style={styles.textAreaWrapper} 
+                            style={[styles.textAreaWrapper, { borderWidth: errors.description ? 1.3: 0, borderColor: errors.description ? '#ff2401': null }]} 
                             autoCapitalize="none" 
                             secureTextEntry={true} 
                             placeholder="Descrição das necessidades"
@@ -75,7 +135,7 @@ const CreateCases = () => {
                 </View>
                 <View style={styles.loginSection}>
                     <Text style={styles.enter}>Cadastrar</Text>
-                    <RectButton onPress={() => {}} style={styles.button} >
+                    <RectButton onPress={createCase} style={styles.button} >
                         <Feather name="arrow-right-circle" size={35} color="#fff" style={styles.buttonText} />
                     </RectButton>
                 </View>

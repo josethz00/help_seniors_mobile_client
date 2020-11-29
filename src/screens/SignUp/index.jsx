@@ -12,7 +12,7 @@ import MaskedInput from '../../components/MaskedInput';
 import { useNotifications } from '../../hooks/useNotifications';
 
 const SignUp = () => {
-  
+
     const nameInputRef = useRef(null);
     const emailInputRef = useRef(null);
     const [tel, setTel] = useState(null);
@@ -22,7 +22,6 @@ const SignUp = () => {
 
     const push_token = useNotifications();
 
-    const [data, setData] = useState(null);
     const [errors, setErrors] = useState({
         name: false,
         email: false,
@@ -58,13 +57,11 @@ const SignUp = () => {
         if (hasErrors)
             return true;
         api.post('users/store', registerData).then((response) => {
-            setData(response.data);
-            navigation.navigate('AddressForm');
-        }).catch((err) => {
-            console.log(err.response.data);
+            console.log(response.data)
+            navigation.navigate('AddressForm', { user_id: response.data } );
+        }).catch(() => {
             alert('Não foi possível realizar o cadastro');
         });
-        api.defaults.headers.colab_id = data;
     }
 
     function validateData (data) {

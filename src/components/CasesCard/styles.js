@@ -51,6 +51,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between'
+    },
+    list: {
+        zIndex: -2,
+        paddingBottom: 100,
     }
 
 });
