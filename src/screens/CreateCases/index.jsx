@@ -48,9 +48,8 @@ const CreateCases = () => {
             }
         }).then((response) => {
             alert(response.data);
-        }).catch((err) => {
+        }).catch(() => {
             alert('Não foi possível realizar o pedido');
-            console.log(err.response.data);
         });
     }
 

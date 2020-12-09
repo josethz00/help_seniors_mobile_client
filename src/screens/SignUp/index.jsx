@@ -57,7 +57,6 @@ const SignUp = () => {
         if (hasErrors)
             return true;
         api.post('users/store', registerData).then((response) => {
-            console.log(response.data)
             navigation.navigate('AddressForm', { user_id: response.data } );
         }).catch(() => {
             alert('Não foi possível realizar o cadastro');
