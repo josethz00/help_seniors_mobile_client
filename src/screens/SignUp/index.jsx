@@ -80,7 +80,7 @@ const SignUp = () => {
         if (!data.emergency_tel || data.emergency_tel.length < 8 || data.emergency_tel.length > 16) {
             err.em_phone = true;
         }
-        if (!data.password || data.password.length < 6 || data.password.length > 30) {
+        if (!data.password || data.password.length < 8 || data.password.length > 30) {
             err.password = true;
         }
         if (!data.vf_password || data.vf_password !== data.password) {

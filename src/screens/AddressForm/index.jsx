@@ -63,7 +63,8 @@ const AddressForm = () => {
             return true;
         api.post('users/address/store', addressData).then(() => {
             navigation.navigate('SignIn');
-        }).catch(() => {
+        }).catch((err) => {
+            console.log(err.response.data);
             alert('Não foi possível realizar o cadastro');
         });
     }
