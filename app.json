@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mobile_client",
-    "slug": "mobile_client",
+    "name": "Help Seniors",
+    "slug": "Help Seniors",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,10 +18,14 @@
     ],
     "android": {
       "useNextNotificationsApi": true,
-      "softwareKeyboardLayoutMode": "pan"
+      "softwareKeyboardLayoutMode": "pan",
+      "package": "com.helpseniors.helpseniors",
+      "versionCode": 1
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.helpseniors.helpseniors",
+      "buildNumber": "1.0.0"
     },
     "web": {
       "favicon": "./assets/favicon.png"
