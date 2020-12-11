@@ -82,7 +82,7 @@ const AddressForm = () => {
         if (!data.longitude) {
             err.longitude = true;
         }
-        if (data.complement.length > 25) {
+        if (!data.complement || data.complement.length > 25) {
             err.complement = true;
         }
         if (!data.street || data.street > 70) {
